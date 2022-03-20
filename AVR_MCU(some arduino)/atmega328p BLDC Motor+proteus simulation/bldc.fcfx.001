@@ -1,0 +1,667 @@
+<root>
+<document schema='101' license='-1,88263627,K38DMR' title='' description='' target='AVR.ATMEGA.Arduino Nano 328' >
+	<config data='' clkspd='16000000' simspd='2' usewdt='0' constif='0' />
+	<plugins >
+		<dll_dbg_icd enabled='0' >
+			<data name='debug' value='1' />
+			<data name='userpins' value='0' />
+			<data name='speed' value='0' />
+			<data name='usev9' value='0' />
+			<data name='breaks' value='8' />
+			<data name='stacks' value='8' />
+			<data name='clkport' value='1' />
+			<data name='clkbit' value='6' />
+			<data name='dataport' value='1' />
+			<data name='databit' value='7' />
+			<data name='ghostype' value='0' />
+			<data name='monitor' value='1' />
+			<data name='ictloop' value='0' />
+			<data name='ictrate' value='20000' />
+			<data name='ictmask' value='0' />
+			<data name='anlpres' value='255' />
+			<data name='digmask1' value='-1' />
+			<data name='digmask2' value='-1' />
+		</dll_dbg_icd>
+		<dll_models enabled='1' />
+		<dll_upgrader enabled='1' />
+		<dll_webhelp enabled='1' />
+	</plugins>
+	<supplement use='0' head='' body='' />
+	<debug />
+	<components >
+		<settings autoimg='1' center='1' unitscale='0' fixedscale='0' fixedx='1' fixedy='1' fixedz='1' headcode='0' />
+		<definition guid='8113db53-241c-4899-83c6-0fad147888d1' vstate='40' vmin='0' vmaj='1' srcleaf='' visiblename='' description='' category='' catenable='1' author='' manuname='' manucode='' sysinfo='0' keywords='' dynamic='0' iconpath='' />
+		<component class_type='root' codename='panel' x='0' y='0' z='0' xsz='1' ysz='1' zsz='1' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='0' poslock='0' >
+			<resources />
+			<properties />
+			<values />
+			<events />
+			<apis />
+			<variables >
+				<variable public='0' >
+					<def class_type='variable' name='speed' type='u8' description='' isconst='0' isinit='1' usrinit='0' setinit='0' />
+				</variable>
+				<variable public='0' >
+					<def class_type='variable' name='false' type='b1' description='' isconst='1' isinit='1' usrinit='0' setinit='0' />
+				</variable>
+				<variable public='0' >
+					<def class_type='variable' name='start' type='b1' description='' isconst='0' isinit='1' usrinit='0' setinit='0' />
+				</variable>
+				<variable public='0' >
+					<def class_type='variable' name='sensC' type='u16' description='' isconst='0' isinit='1' usrinit='0' setinit='0' />
+				</variable>
+				<variable public='0' >
+					<def class_type='variable' name='sensB' type='u16' description='' isconst='0' isinit='1' usrinit='0' setinit='0' />
+				</variable>
+				<variable public='0' >
+					<def class_type='variable' name='sensA' type='u16' description='' isconst='0' isinit='1' usrinit='0' setinit='0' />
+				</variable>
+				<variable public='0' >
+					<def class_type='variable' name='true' type='b1' description='' isconst='1' isinit='1' usrinit='1' setinit='1' />
+				</variable>
+			</variables>
+			<macros >
+				<macro >
+					<flowline name='fase6' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='0' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='1' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='2' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='3' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='4' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='5' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='fase5' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='0' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='1' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='2' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='3' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='4' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='5' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='fase4' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='0' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='1' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='2' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='3' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='4' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='5' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='fase3' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='0' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='1' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='2' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='3' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='4' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='5' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='fase2' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='0' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='1' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='2' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='3' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='4' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='5' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='getHallSensor' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Macro' macro='setSpeed' />
+						<command class_type='call' title='Call Component Macro' component='hallA' macro='GetInt' >
+							<return exp='sensA' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='HallB' macro='GetInt' >
+							<return exp='sensB' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='HallC' macro='GetInt' >
+							<return exp='sensC' />
+						</command>
+						<command class_type='call' title='Call Macro' macro='cekfase1' />
+						<command class_type='call' title='Call Macro' macro='cekfase2' />
+						<command class_type='call' title='Call Macro' macro='cekfase3' />
+						<command class_type='call' title='Call Macro' macro='cekfase4' />
+						<command class_type='call' title='Call Macro' macro='cekfase5' />
+						<command class_type='call' title='Call Macro' macro='cekfase6' />
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='fase1' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='0' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='1' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='2' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='3' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOn' >
+							<argument exp='4' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='mosfetDriver' macro='LEDOff' >
+							<argument exp='5' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='jumpStart' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='speedCon' macro='GetByte' >
+							<return exp='speed' />
+						</command>
+						<command class_type='decision' title='Decision' exp='speed &gt; 5' swap='0' >
+							<flowline >
+								<command class_type='loop' title='Loop' type='0' exp='start = 0' >
+									<flowline >
+										<command class_type='call' title='Call Macro' macro='setSpeed' />
+										<command class_type='call' title='Call Macro' macro='fase1' />
+										<command class_type='calculation' title='Calculation' >
+											<exp exp='start = 1' />
+										</command>
+									</flowline>
+								</command>
+							</flowline>
+							<flowline >
+								<command class_type='calculation' title='Calculation' >
+									<exp exp='start = 0' />
+								</command>
+							</flowline>
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='setSpeed' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='speedCon' macro='GetByte' >
+							<return exp='speed' />
+						</command>
+						<command class_type='call' title='Call Component Macro' component='pwmSpeed' macro='SetDutyCycle' >
+							<argument exp='speed' />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='cekfase6' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='decision' title='Decision' exp='sensA = 0' swap='0' >
+							<flowline >
+								<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+											<flowline >
+												<command class_type='call' title='Call Macro' macro='fase6' />
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+								<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+											<flowline >
+												<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+													<flowline >
+														<command class_type='call' title='Call Macro' macro='fase1' />
+													</flowline>
+													<flowline />
+												</command>
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+							</flowline>
+							<flowline />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='cekfase5' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='decision' title='Decision' exp='sensA = 0' swap='0' >
+							<flowline >
+								<command class_type='decision' title='Decision' exp='sensB &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+											<flowline >
+												<command class_type='call' title='Call Macro' macro='fase5' />
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+								<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+											<flowline >
+												<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+													<flowline >
+														<command class_type='call' title='Call Macro' macro='fase1' />
+													</flowline>
+													<flowline />
+												</command>
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+							</flowline>
+							<flowline />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='cekfase4' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='decision' title='Decision' exp='sensA = 0' swap='0' >
+							<flowline >
+								<command class_type='decision' title='Decision' exp='sensB &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensC = 0' swap='0' >
+											<flowline >
+												<command class_type='call' title='Call Macro' macro='fase4' />
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+								<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+											<flowline >
+												<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+													<flowline >
+														<command class_type='call' title='Call Macro' macro='fase1' />
+													</flowline>
+													<flowline />
+												</command>
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+							</flowline>
+							<flowline />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='cekfase3' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+							<flowline >
+								<command class_type='decision' title='Decision' exp='sensB &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensC = 0' swap='0' >
+											<flowline >
+												<command class_type='call' title='Call Macro' macro='fase3' />
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+								<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+											<flowline >
+												<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+													<flowline >
+														<command class_type='call' title='Call Macro' macro='fase1' />
+													</flowline>
+													<flowline />
+												</command>
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+							</flowline>
+							<flowline />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='cekfase2' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+							<flowline >
+								<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensC = 0' swap='0' >
+											<flowline >
+												<command class_type='call' title='Call Macro' macro='fase2' />
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+								<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+											<flowline >
+												<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+													<flowline >
+														<command class_type='call' title='Call Macro' macro='fase1' />
+													</flowline>
+													<flowline />
+												</command>
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+							</flowline>
+							<flowline />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='cekfase1' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+							<flowline >
+								<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+											<flowline >
+												<command class_type='call' title='Call Macro' macro='fase1' />
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+								<command class_type='decision' title='Decision' exp='sensA &gt; 0' swap='0' >
+									<flowline >
+										<command class_type='decision' title='Decision' exp='sensB = 0' swap='0' >
+											<flowline >
+												<command class_type='decision' title='Decision' exp='sensC &gt; 0' swap='0' >
+													<flowline >
+														<command class_type='call' title='Call Macro' macro='fase1' />
+													</flowline>
+													<flowline />
+												</command>
+											</flowline>
+											<flowline />
+										</command>
+									</flowline>
+									<flowline />
+								</command>
+							</flowline>
+							<flowline />
+						</command>
+					</flowline>
+				</macro>
+				<macro >
+					<flowline name='Main' description='' >
+						<return name='Return' type='v0' description='' isconst='0' isinit='0' usrinit='' setinit='' />
+						<command class_type='call' title='Call Component Macro' component='pwmSpeed' macro='Enable' />
+						<command class_type='calculation' title='Calculation' >
+							<exp exp='start = 0' />
+						</command>
+						<command class_type='interrupt' title='Interrupt' enable='1' name='INT0' call='getHallSensor' >
+							<settings timer='0' prescale='-1' postscale='-1' rollover='-1' bitcount='-1' trigger='1' maskhi='--------------------------------------------------------------------------------------------------------------------------------------------------------------------------8' masklo='--------------------------------------------------------------------------------------------------------------------------------------------------------------------------8' >
+								<option value='0' />
+								<option value='0' />
+								<option value='0' />
+								<option value='0' />
+							</settings>
+						</command>
+						<command class_type='loop' title='Loop' type='0' exp='speed &lt; 5' >
+							<flowline >
+								<command class_type='call' title='Call Macro' macro='jumpStart' />
+							</flowline>
+						</command>
+					</flowline>
+				</macro>
+			</macros>
+			<component class_type='ref' guid='14683ea8-5a08-4b3a-be2d-3dea3e17e720' vmin='3' vmaj='1' codename='hallA' x='-72' y='112' z='9' xsz='25.1419' ysz='25.1419' zsz='18.45' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='1' poslock='1' >
+				<resources />
+				<properties />
+				<values >
+					<value target='angle_start' data='225.000000' />
+					<value target='angle_sweep' data='270.000000' />
+					<value target='cap_color' data='192' />
+					<value target='point_color' data='16777215' />
+					<value target='ScopeTraces' data='0' />
+					<value target='channel' data='0' />
+					<value target='vrefvol' data='500' />
+					<value target='vrefop' data='000' />
+					<value target='convspd' data='003' />
+					<value target='actime' data='40' />
+					<value target='bits' data='10' />
+					<value target='bitmul' data='0.004883' />
+				</values>
+				<events />
+				<apis />
+				<variables />
+				<macros />
+			</component>
+			<component class_type='ref' guid='14683ea8-5a08-4b3a-be2d-3dea3e17e720' vmin='3' vmaj='1' codename='HallB' x='-51.9711' y='112' z='9' xsz='25.1419' ysz='25.1419' zsz='18.45' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='1' poslock='1' >
+				<resources />
+				<properties />
+				<values >
+					<value target='angle_start' data='225.000000' />
+					<value target='angle_sweep' data='270.000000' />
+					<value target='cap_color' data='16734080' />
+					<value target='point_color' data='16777215' />
+					<value target='ScopeTraces' data='0' />
+					<value target='channel' data='1' />
+					<value target='vrefvol' data='500' />
+					<value target='vrefop' data='000' />
+					<value target='convspd' data='003' />
+					<value target='actime' data='40' />
+					<value target='bits' data='10' />
+					<value target='bitmul' data='0.004883' />
+				</values>
+				<events />
+				<apis />
+				<variables />
+				<macros />
+			</component>
+			<component class_type='ref' guid='14683ea8-5a08-4b3a-be2d-3dea3e17e720' vmin='3' vmaj='1' codename='HallC' x='-31.9421' y='112' z='9' xsz='25.1419' ysz='25.1419' zsz='18.45' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='1' poslock='1' >
+				<resources />
+				<properties />
+				<values >
+					<value target='angle_start' data='225.000000' />
+					<value target='angle_sweep' data='270.000000' />
+					<value target='cap_color' data='65280' />
+					<value target='point_color' data='16777215' />
+					<value target='ScopeTraces' data='0' />
+					<value target='channel' data='2' />
+					<value target='vrefvol' data='500' />
+					<value target='vrefop' data='000' />
+					<value target='convspd' data='003' />
+					<value target='actime' data='40' />
+					<value target='bits' data='10' />
+					<value target='bitmul' data='0.004883' />
+				</values>
+				<events />
+				<apis />
+				<variables />
+				<macros />
+			</component>
+			<component class_type='ref' guid='63177601-e8e2-4330-89d3-a4c5a7e228f5' vmin='1' vmaj='1' codename='mosfetDriver' x='-24' y='72' z='6.23729' xsz='2.71186' ysz='2.71186' zsz='2.71186' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='1' poslock='1' >
+				<resources />
+				<properties />
+				<values >
+					<value target='count' data='6' />
+					<value target='polarity' data='001' />
+					<value target='port' data='001' />
+					<value target='pin0' data='$PORTB.0' />
+					<value target='pin1' data='$PORTB.1' />
+					<value target='pin2' data='$PORTB.2' />
+					<value target='pin3' data='$PORTB.3' />
+					<value target='pin4' data='$PORTB.4' />
+					<value target='pin5' data='$PORTB.5' />
+					<value target='pin6' data='$PORTB.6' />
+					<value target='pin7' data='$PORTB.7' />
+					<value target='full_port' data='$PORTB' />
+					<value target='align' data='000' />
+					<value target='spacing' data='7.000000' />
+					<value target='reverse' data='0' />
+					<value target='show_labels' data='003' />
+					<value target='color_led0' data='65280' />
+					<value target='label_color' data='16777215' />
+					<value target='bitmask' data='255' />
+					<value target='inv_bitmask' data='-256' />
+				</values>
+				<events />
+				<apis />
+				<variables />
+				<macros />
+			</component>
+			<component class_type='ref' guid='444fb704-814c-4707-a15c-759ba088505c' vmin='6' vmaj='1' codename='pwmSpeed' x='16' y='-120' z='3.05933' xsz='3.46667' ysz='3.46667' zsz='3.46667' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='1' poslock='1' >
+				<resources />
+				<properties />
+				<values >
+					<value target='channel' data='001' />
+					<value target='altpin' data='0' />
+					<value target='pwm_pin' data='$PORTD.6' />
+					<value target='RemapPin' data='' />
+					<value target='timer' data='2' />
+					<value target='period' data='255' />
+					<value target='prescale' data='003' />
+					<value target='period_calc' data='256.000000' />
+					<value target='frequency_calc' data='3.906250' />
+					<value target='pwm_prescale' data='8' />
+					<value target='SimRep' data='001' />
+				</values>
+				<events />
+				<apis />
+				<variables />
+				<macros />
+			</component>
+			<component class_type='ref' guid='1a8c2bb7-8bed-4a1c-9186-ba24688c8840' vmin='3' vmaj='1' codename='speedCon' x='40' y='160' z='5' xsz='12.502' ysz='112.5' zsz='10' xang='0' yang='0' zang='0' xquat='0' yquat='0' zquat='0' wquat='1' visible='1' interactive='1' solid='1' layer='1' poslock='0' >
+				<resources />
+				<properties />
+				<values >
+					<value target='tang_col' data='2960685' />
+					<value target='mark_col' data='255' />
+					<value target='ScopeTraces' data='0' />
+					<value target='channel' data='3' />
+					<value target='vrefvol' data='500' />
+					<value target='vrefop' data='000' />
+					<value target='convspd' data='003' />
+					<value target='actime' data='40' />
+					<value target='bits' data='10' />
+					<value target='bitmul' data='0.004883' />
+				</values>
+				<events />
+				<apis />
+				<variables />
+				<macros />
+			</component>
+		</component>
+	</components>
+	<keymap />
+	<panel2d shadows='0' lighting='2' brightness='0' perspective='0' >
+		<background rgb='9737364' img='' style='0' />
+		<camera xe='0' ye='0' ze='300' xt='0' yt='0' zt='0' xquat='0' yquat='0' zquat='0' wquat='1' />
+	</panel2d>
+	<panel3d shadows='0' lighting='2' brightness='0' perspective='0' >
+		<background rgb='8409120' img='' style='0' />
+		<table rgb='7360576' img='' style='0' size='25' />
+		<camera xe='0' ye='0' ze='300' xt='0' yt='0' zt='0' xquat='0' yquat='0' zquat='0' wquat='1' />
+	</panel3d>
+	<layout >
+		<view type='0' name='Main' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='151' flags='0' />
+		<view type='0' name='getHallSensor' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='0' flags='0' />
+		<view type='0' name='jumpStart' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='0' flags='0' />
+		<view type='0' name='setSpeed' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='0' flags='0' />
+		<view type='0' name='fase2' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='52' flags='0' />
+		<view type='0' name='fase3' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='75' flags='0' />
+		<view type='0' name='fase4' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='60' flags='0' />
+		<view type='0' name='fase5' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='90' flags='0' />
+		<view type='0' name='fase6' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='60' flags='0' />
+		<view type='0' name='fase1' mode='0' placement='LAAAAAAAAAABAAAA---------------------wAAAAAUAAAA2QIAALUBAAA' zoom='75' scrollx='0' scrolly='67' flags='0' />
+	</layout>
+</document>
+</root>
