@@ -1,0 +1,234 @@
+CCS PCM C Compiler, Version 5.007, 61971               29-May-19 11:03
+
+               Filename:   C:\Users\User\Desktop\servo\servo.lst
+
+               ROM used:   147 words (2%)
+                           Largest free fragment is 2048
+               RAM used:   17 (5%) at main() level
+                           17 (5%) worst case
+               Stack used: 1 locations (0 in main + 1 for interrupts)
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   061
+0003:  NOP
+0004:  MOVWF  7F
+0005:  SWAPF  03,W
+0006:  CLRF   03
+0007:  MOVWF  21
+0008:  MOVF   0A,W
+0009:  MOVWF  20
+000A:  CLRF   0A
+000B:  MOVF   04,W
+000C:  MOVWF  22
+000D:  MOVF   77,W
+000E:  MOVWF  23
+000F:  MOVF   78,W
+0010:  MOVWF  24
+0011:  MOVF   79,W
+0012:  MOVWF  25
+0013:  MOVF   7A,W
+0014:  MOVWF  26
+0015:  BCF    03.7
+0016:  BCF    03.5
+0017:  BTFSS  0B.5
+0018:  GOTO   01B
+0019:  BTFSC  0B.2
+001A:  GOTO   02C
+001B:  MOVF   22,W
+001C:  MOVWF  04
+001D:  MOVF   23,W
+001E:  MOVWF  77
+001F:  MOVF   24,W
+0020:  MOVWF  78
+0021:  MOVF   25,W
+0022:  MOVWF  79
+0023:  MOVF   26,W
+0024:  MOVWF  7A
+0025:  MOVF   20,W
+0026:  MOVWF  0A
+0027:  SWAPF  21,W
+0028:  MOVWF  03
+0029:  SWAPF  7F,F
+002A:  SWAPF  7F,W
+002B:  RETFIE
+002C:  BCF    0A.3
+002D:  BCF    0A.4
+002E:  GOTO   03A
+.................... #include <16f877.h> 
+.................... //////// Standard Header file for the PIC16F877 device //////////////// 
+.................... #device PIC16F877 
+002F:  BCF    0A.0
+0030:  BCF    0A.1
+0031:  BCF    0A.2
+0032:  ADDWF  02,F
+0033:  RETLW  04
+0034:  RETLW  05
+0035:  RETLW  06
+0036:  RETLW  07
+0037:  RETLW  08
+0038:  RETLW  09
+0039:  RETLW  0A
+....................  
+.................... #list 
+....................  
+.................... #use delay(clock=4000000) 
+.................... #fuses XT,NOWDT,NOPUT,NOLVP,NOCPD,NOPROTECT,NODEBUG,NOBROWNOUT,NOWRT 
+....................  
+.................... #use fast_io(b) 
+....................  
+.................... int sayac=0,duty=0,adim=0; 
+.................... const int deger[]={4,5,6,7,8,9,10}; 
+....................  
+.................... int16 gecikme=0; 
+....................  
+.................... #int_timer0 
+.................... void kesme(){ 
+.................... set_timer0(231); 
+003A:  MOVLW  E7
+003B:  MOVWF  01
+.................... if(sayac==0) 
+003C:  MOVF   27,F
+003D:  BTFSC  03.2
+.................... output_high(pin_b0); 
+003E:  BSF    06.0
+....................  
+.................... if(sayac>=duty) 
+003F:  MOVF   28,W
+0040:  SUBWF  27,W
+0041:  BTFSC  03.0
+.................... output_low(pin_b0); 
+0042:  BCF    06.0
+.................... sayac++; 
+0043:  INCF   27,F
+.................... if(sayac==100) 
+0044:  MOVF   27,W
+0045:  SUBLW  64
+0046:  BTFSC  03.2
+.................... sayac=0; 
+0047:  CLRF   27
+....................  
+.................... gecikme++; 
+0048:  INCF   2A,F
+0049:  BTFSC  03.2
+004A:  INCF   2B,F
+.................... if(gecikme>10000){ 
+004B:  MOVF   2B,W
+004C:  SUBLW  26
+004D:  BTFSC  03.0
+004E:  GOTO   05D
+004F:  XORLW  FF
+0050:  BTFSS  03.2
+0051:  GOTO   056
+0052:  MOVF   2A,W
+0053:  SUBLW  10
+0054:  BTFSC  03.0
+0055:  GOTO   05D
+.................... gecikme=0; 
+0056:  CLRF   2B
+0057:  CLRF   2A
+.................... adim++; 
+0058:  INCF   29,F
+.................... if(adim==6) 
+0059:  MOVF   29,W
+005A:  SUBLW  06
+005B:  BTFSC  03.2
+.................... adim=0; 
+005C:  CLRF   29
+.................... } 
+....................  
+005D:  BCF    0B.2
+005E:  BCF    0A.3
+005F:  BCF    0A.4
+0060:  GOTO   01B
+.................... } 
+....................  
+....................  
+.................... void main() 
+0061:  CLRF   27
+0062:  CLRF   28
+0063:  CLRF   29
+0064:  CLRF   2B
+0065:  CLRF   2A
+0066:  BSF    03.5
+0067:  BSF    1F.0
+0068:  BSF    1F.1
+0069:  BSF    1F.2
+006A:  BCF    1F.3
+006B:  BCF    03.7
+006C:  MOVLW  1F
+006D:  ANDWF  03,F
+.................... { 
+....................    setup_psp(PSP_DISABLED); 
+006E:  BCF    09.4
+....................    setup_timer_1(T1_DISABLED); 
+006F:  BCF    03.5
+0070:  CLRF   10
+....................    setup_timer_2(T2_DISABLED,0,1); 
+0071:  MOVLW  00
+0072:  MOVWF  78
+0073:  MOVWF  12
+0074:  MOVLW  00
+0075:  BSF    03.5
+0076:  MOVWF  12
+....................    setup_adc_ports(NO_ANALOGS); 
+0077:  BSF    1F.0
+0078:  BSF    1F.1
+0079:  BSF    1F.2
+007A:  BCF    1F.3
+....................    setup_adc(ADC_OFF); 
+007B:  BCF    03.5
+007C:  BCF    1F.0
+....................    setup_CCP1(CCP_OFF); 
+007D:  MOVLW  F0
+007E:  ANDWF  17,F
+....................    setup_CCP2(CCP_OFF); 
+007F:  ANDWF  1D,F
+....................     
+....................    set_tris_b(0x00); 
+0080:  MOVLW  00
+0081:  BSF    03.5
+0082:  MOVWF  06
+....................     
+....................    setup_timer_0(RTCC_INTERNAL | RTCC_DIV_8); 
+0083:  MOVF   01,W
+0084:  ANDLW  C0
+0085:  IORLW  02
+0086:  MOVWF  01
+....................    set_timer0(231); 
+0087:  MOVLW  E7
+0088:  BCF    03.5
+0089:  MOVWF  01
+....................     
+....................    enable_interrupts(INT_timer0); 
+008A:  BSF    0B.5
+....................    enable_interrupts(GLOBAL); 
+008B:  MOVLW  C0
+008C:  IORWF  0B,F
+....................     
+....................    while(true){ 
+....................     
+....................    duty=deger[adim]; 
+008D:  MOVF   29,W
+008E:  CALL   02F
+008F:  MOVWF  78
+0090:  MOVWF  28
+0091:  GOTO   08D
+....................     
+....................    } 
+....................     
+....................  
+....................  
+.................... } 
+....................  
+0092:  SLEEP
+....................  
+....................  
+....................  
+....................  
+....................  
+
+Configuration Fuses:
+   Word  1: 3F39   XT NOWDT NOPUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
