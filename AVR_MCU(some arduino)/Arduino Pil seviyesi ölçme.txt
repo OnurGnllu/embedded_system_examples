@@ -1,0 +1,64 @@
+#include <LiquidCrystal.h>
+
+LiquidCrystal lcd(12,11,5,4,3,2);
+
+#define pil A1
+#define led1 10
+#define led2 9
+
+// 338 max - 1.65 V
+// 246 min - 1.2 V
+//(1024/5)*1.65= max okunan analog değer
+//(1024/5)*1.2= min okunan analog değer
+
+int min_deger = 246;
+float yuzde = 0;
+float deger = 0; 
+float pilgerilimi=0;
+float gerilim = 0;
+
+
+
+
+void setup() {
+  
+  lcd.begin(16,2);
+  lcd.clear();
+  pinMode(led1,OUTPUT);
+  pinMode(led2,OUTPUT);
+
+
+}
+
+void loop() {
+
+   gerilim = analogRead(pil);
+
+
+  if(gerilim >= 338)
+    { 
+      gerilim = 338;
+      digitalWrite(led1,HIGH); 
+     digitalWrite(led2,LOW); 
+    }
+
+  if(gerilim <= 246)
+      {
+        gerilim = 246; 
+        digitalWrite(led1,LOW); 
+     digitalWrite(led2,HIGH); 
+      }
+   yuzde = gerilim - min_deger;
+   deger = (100.00/92.00) * yuzde;
+   pilgerilimi=gerilim/(1024/5);
+  lcd.setCursor(0,0);
+  lcd.print("Gerilim: ");
+  lcd.print(pilgerilimi);
+  lcd.print("V");
+
+   lcd.setCursor(0,1);
+   lcd.print("Doluluk: %");
+   lcd.print(deger);
+   delay(10000);
+  
+}

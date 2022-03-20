@@ -1,0 +1,18 @@
+
+#include <avr/io.h>
+int main(void) //main starts
+
+{
+DDRD |=( 1<<4) ; //Make pin 4 of port D as a output
+DDRD &= ~(1<<5) ; // Make pin 5 of port D as a input
+
+while (1) //initialize while loop
+{
+if(PIND & (1<<5) ) //if PIN5 of port C is high
+PORTD |= ( 1<<4) ; //PIN4 of port D is high
+else //otherwise
+PORTD  &=  ~( 1<<4) ; //PIN4 of port D will remain low
+
+}
+
+}

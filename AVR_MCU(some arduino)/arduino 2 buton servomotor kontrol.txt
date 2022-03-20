@@ -1,0 +1,77 @@
+#include <Servo.h>
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(12, 11, 5, 7, 9, 10);
+
+Servo myservo;
+int buton1=2; // buton1, 2 nolu pine bağlanacak
+
+int buton2=4; // buton2, 4 nolu pine bağlanacak
+int angle =90;    
+int angleStep =5;
+void setup()
+
+{
+myservo.attach(3);  // servonun data ucu 5 nolu pine takılacak.İstediğiniz pine takabilirsiniz.
+pinMode(buton1,INPUT);
+pinMode(buton2,INPUT);
+lcd.begin(16,2);
+
+
+
+}
+
+void loop() {
+ lcd.clear();
+      
+ 
+
+  // Servo button demo by Robojax.com
+  while(digitalRead(buton1) == LOW){
+       lcd.setCursor(0,0);
+lcd.print(angle);
+lcd.setCursor(0,1);
+lcd.print("Kapiaciliyor");
+
+    if (angle > 0 && angle <= 180) {
+      angle = angle - angleStep;
+       if(angle < 0){
+        angle = 0;
+       }else{
+       
+      myservo.write(angle); // move the servo to desired angle
+     
+       }
+    }
+    
+  delay(100); // waits for the servo to get there
+  }// while
+ // Servo button demo by Robojax.com
+
+  while(digitalRead(buton2) == LOW){
+    lcd.clear();
+         lcd.setCursor(0,0);
+lcd.print(angle);
+lcd.setCursor(0,1);
+lcd.print("Kapikapaniyor");
+
+
+    // Servo button demo by Robojax.com
+    if (angle >= 0 && angle <= 180) {
+      angle = angle + angleStep;
+      if(angle >180){
+        angle =180;
+        
+       }else{
+      myservo.write(angle); // move the servo to desired angle
+   
+
+       }
+    }
+    
+  delay(100); // waits for the servo to get there
+  
+  }// 
+
+  
+}
+

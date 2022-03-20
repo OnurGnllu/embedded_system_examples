@@ -1,0 +1,66 @@
+
+// include the library code:
+#include <LiquidCrystal.h>
+#include <Servo.h>
+Servo servomotor;
+int buzzer=8;
+int trigpin=10;
+int echopin=9;
+long sure;
+long uzaklik;
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+pinMode(trigpin, OUTPUT);
+pinMode(echopin,INPUT);
+Serial.begin(9600);
+servomotor.attach(6);
+lcd.begin(16,2);
+pinMode(buzzer, OUTPUT);
+}
+
+void loop() 
+{
+ digitalWrite(trigpin, LOW);
+delayMicroseconds(2); 
+digitalWrite(trigpin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigpin, LOW);   
+sure =pulseIn(echopin, HIGH); 
+uzaklik=(sure/2)*0.0343;
+Serial.print(uzaklik); 
+   delay(50);
+          // 1 saniye boyunca susmasını söyledik.
+
+
+if(uzaklik < 30) 
+{
+servomotor.write(90);
+
+lcd.clear();
+lcd.home();
+lcd.setCursor(0,0);
+   lcd.print("araba geldi");
+   lcd.setCursor(0,1);
+   lcd.print("aciliyor");
+lcd.setCursor(0,0);
+   lcd.print("araba geldi");
+   lcd.setCursor(0,1);
+   lcd.print("acildi");
+    digitalWrite(buzzer,HIGH); //Buzzer'a güç göndererek ses çıkarmasını sağladık.
+ delay(1000);                  // 1 saniye boyunca çalmasını söyledik.
+ digitalWrite(buzzer,LOW); //Buzzerın gücünü keserek susmasını sağladık sağladık.
+ delay(1000);          
+
+}
+
+else if (uzaklik>32) {
+
+ servomotor.write(-180);
+ lcd.clear();
+lcd.home();
+ lcd.setCursor(0,0);
+   lcd.print("araba yok");
+  delay(1);
+}
+}
