@@ -1,7 +1,0 @@
-D G "__PCM__" 0 0 ""5.007""
-D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""04-Eki-21""
-D G "__TIME__" 0 0 ""21:07:39""
-D G "use_portb_lcd" 0 10 "TRUE"
-F B "delay_ms" 1 0
-F B "delay_us" 1 0
